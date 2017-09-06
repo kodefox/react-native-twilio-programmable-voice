@@ -89,7 +89,12 @@ const Twilio = {
         if (_eventHandlers[type].has(handler)) {
             return
         }
-        _eventHandlers[type].set(handler, NativeAppEventEmitter.addListener(type, rtn => { handler(rtn) }))
+        _eventHandlers[type].set(
+            handler,
+            NativeAppEventEmitter.addListener(type, rtn => {
+                handler(rtn)
+            }),
+        )
     },
     removeEventListener(type, handler) {
         if (!_eventHandlers[type].has(handler)) {
@@ -97,7 +102,7 @@ const Twilio = {
         }
         _eventHandlers[type].get(handler).remove()
         _eventHandlers[type].delete(handler)
-    }
+    },
 }
 
 export default Twilio

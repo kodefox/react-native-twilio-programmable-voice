@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "prettier": "^1.6.1"
+  },
   "homepage": "https://github.com/kodefox/react-native-twilio-voice",
   "keywords": [
     "twilio",
