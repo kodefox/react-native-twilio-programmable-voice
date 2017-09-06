@@ -1,62 +1,10 @@
-# react-native-twilio-programmable-voice
+# react-native-twilio-voice
 This is a React Native wrapper for Twilio Programmable Voice SDK that lets you make and receive calls from your ReactNatvie App. This module is not curated nor maintained, but inspired by Twilio.
 
 # Twilio Programmable Voice SDK
 
 - Android 2.0.0-beta15 (bundled within this library)
 - iOS 2.0.0-beta13 (specified by the app's own podfile)
-
-## Migrating Android from v1 to v2 (incoming call use FCM)
-
-You will need to make changes both on your Twilio account using Twilio Web Console and on your react native app.
-Twilio Programmable Voice Android SDK uses `FCM` since version 2.0.0.beta5.
-
-Before you start, I strongly suggest that you read the list of Twilio changes from Android SDK v2.0.0 beta4 to beta5:
-[Twilio example App: Migrating from GCM to FCM](https://github.com/twilio/voice-quickstart-android/blob/d7d4f0658e145eb94ab8f5e34f6fd17314e7ab17/README.md#migrating-from-gcm-to-fcm)
-
-These are all the changes required:
-
-- remove all the GCM related code from your `AndroidManifest.xml` and add the following code to receive `FCM` notifications
-(I wasn't succesful in keeping react-native-fcm working at the same time. If you know how please open an issue to share).
-
-```xml
-    .....
-
-    <!-- Twilio Voice -->
-    <!-- [START fcm_listener] -->
-    <service
-        android:name="com.hoxfon.react.TwilioVoice.fcm.VoiceFirebaseMessagingService">
-        <intent-filter>
-            <action android:name="com.google.firebase.MESSAGING_EVENT" />
-        </intent-filter>
-    </service>
-    <!-- [END fcm_listener] -->
-    <!-- [START instanceId_listener] -->
-    <service
-        android:name="com.hoxfon.react.TwilioVoice.fcm.VoiceFirebaseInstanceIDService"
-        android:exported="false">
-        <intent-filter>
-            <action android:name="com.google.android.gms.iid.InstanceID" />
-        </intent-filter>
-    </service>
-    <!-- [END instanceId_listener] -->
-    <!-- Twilio Voice -->
-```
-
-- log into your Firebase console. Naviagete to: Project settings > CLOUD MESSANGING. Copy your `Server key`
-- in Twilio console add a new Push Credential, type `FCM`, fcm secret Firebase FCM `Server key`
-- include in your project `google-services.json`; if you have not include it yet
-- rename getIncomingCall() to getActiveCall()
-
-If something doesn't work as expected or you want to make a request open an issue.
-
-## Help wanted!
-
-There is no need to ask permissions to contribute. Just open an issue or provide a PR. Everybody is welcome to contribute.
-
-ReactNative success is directly linked to its module ecosystem. One way to make an impact is helping contributing to this module or another of the many community lead ones.
-
-![help wanted](images/vjeux_tweet.png "help wanted")
 
 ## Installation
 
@@ -65,12 +13,12 @@ It's easier to integrate this module into your react-native app if you follow th
 
 
 ```
-npm install react-native-twilio-programmable-voice --save
-react-native link react-native-twilio-programmable-voice
+npm install react-native-twilio-voice --save
+react-native link react-native-twilio-voice
 ```
 
 ### iOS Installation
-After you have linked the library with `react-native link react-native-twilio-programmable-voice`
+After you have linked the library with `react-native link react-native-twilio-voice`
 check that `libRNTwilioVoice.a` is present under YOUR_TARGET > Build Phases > Link Binaries With Libraries. If it is not present you can add it using the + sign at the bottom of that list.
 
 Edit your `Podfile` to include TwilioVoice framework
@@ -127,7 +75,7 @@ buildscript {
 dependencies {
     ...
 
-    compile project(':react-native-twilio-programmable-voice')
+    compile project(':react-native-twilio-voice')
     compile ('com.google.android.gms:play-services-gcm:10.2.0') {
         force = true;
     }
@@ -179,8 +127,8 @@ In `android/settings.gradle`
 ```gradle
 ...
 
-include ':react-native-twilio-programmable-voice'
-project(':react-native-twilio-programmable-voice').projectDir = file('../node_modules/react-native-twilio-programmable-voice/android')
+include ':react-native-twilio-voice'
+project(':react-native-twilio-voice').projectDir = file('../node_modules/react-native-twilio-voice/android')
 ```
 
 Register module (in `MainApplication.java`)
@@ -211,7 +159,7 @@ public class MainApplication extends Application implements ReactApplication {
 ## Usage
 
 ```javascript
-import TwilioVoice from 'react-native-twilio-programmable-voice'
+import TwilioVoice from 'react-native-twilio-voice'
 ...
 
 // initialize the Programmable Voice SDK passing an access token obtained from the server.
