@@ -333,9 +333,9 @@ RCT_REMAP_METHOD(getActiveCall,
     [params setObject:StateDisconnected forKey:@"call_state"];
   }
   [self sendEventWithName:@"connectionDidDisconnect" body:params];
-  if (self.call.state == TVOCallStateConnected) {
-    [self performEndCallActionWithUUID:call.uuid];
-  }
+
+  [self performEndCallActionWithUUID:call.uuid];
+
   self.call = nil;
 }
 
@@ -360,9 +360,8 @@ RCT_REMAP_METHOD(getActiveCall,
   }
   [self sendEventWithName:@"connectionDidDisconnect" body:params];
 
-  if (self.call.state == TVOCallStateConnected) {
-    [self performEndCallActionWithUUID:call.uuid];
-  }
+  [self performEndCallActionWithUUID:call.uuid];
+
   self.call = nil;
 }
 
