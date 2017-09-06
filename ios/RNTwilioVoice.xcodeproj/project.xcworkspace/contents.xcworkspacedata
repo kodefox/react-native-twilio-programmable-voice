@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/fab/projects/react-native-twilio-programmable-voice/ios/RNTwilioVoice.xcodeproj">
+      location = "self:/Users/Me/projects/react-native-twilio-voice/ios/RNTwilioVoice.xcodeproj">
    </FileRef>
 </Workspace>

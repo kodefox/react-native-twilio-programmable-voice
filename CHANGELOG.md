@@ -1,4 +1,4 @@
-[Release Section](https://github.com/hoxfon/react-native-twilio-programmable-voice/releases)
+[Release Section](https://github.com/hoxfon/react-native-twilio-voice/releases)
 
 ## 2.8.0
 - iOS: prevent CallKit to be initialised more than once
